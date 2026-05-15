@@ -1,43 +1,154 @@
-# BTL-TRR2
-Đây là bài tập lớn môn Toán rời rạc 2 PTIT: 
-🕸️ Phân Tích Cấu Trúc Mạng Lưới Xã Hội
-Dự án phân tích và trực quan hóa mạng xã hội bằng Python, sử dụng các thuật toán đồ thị để tính toán các chỉ số quan trọng như PageRank, Betweenness Centrality, và phát hiện cộng đồng (community detection) theo thuật toán Louvain.
+# Social Network Analysis Dashboard
 
-📋 Mục Lục
+## Giới thiệu
+Dự án này xây dựng một hệ thống phân tích mạng xã hội bằng Python sử dụng:
 
-Tính năng
+- NetworkX để mô hình hóa đồ thị
+- Pandas để xử lý dữ liệu
+- Matplotlib + Seaborn để trực quan hóa
+- python-louvain để phát hiện cộng đồng (Community Detection)
 
-Yêu cầu hệ thống
+Chương trình mô phỏng mạng xã hội dạng directed graph (đồ thị có hướng), sau đó phân tích các chỉ số quan trọng như:
 
-Cài đặt
-
-Cách sử dụng
-
-Cấu trúc dữ liệu
-
-Các chỉ số phân tích
-
-Dashboard trực quan hóa
-
-Cấu trúc dự án
+- PageRank → Độ uy tín / mức ảnh hưởng
+- Betweenness Centrality → Vai trò cầu nối
+- Local Clustering Coefficient (LCC) → Mức độ gom cụm
+- Community Detection (Louvain) → Phân cụm cộng đồng
 
 
-✨ Tính Năng
+# Nội dung dự án
 
-✅ Xây dựng đồ thị có hướng (DiGraph) từ dữ liệu quan hệ người dùng
+Project gồm:
 
-✅ Tính toán PageRank — đo lường mức độ uy tín/ảnh hưởng của từng node
+- File báo cáo PDF
+- File Jupyter Notebook (.ipynb)
 
-✅ Tính toán Betweenness Centrality — xác định các node đóng vai trò cầu nối
+Notebook chứa toàn bộ:
+- Source code
+- Phân tích dữ liệu
+- Trực quan hóa dashboard
 
-✅ Tính toán Local Clustering Coefficient (LCC) — đo mức độ gom cụm cục bộ
 
-✅ Phát hiện cộng đồng tự động bằng thuật toán Louvain
+# Demo Dashboard
 
-✅ Xuất Dashboard tổng hợp gồm bản đồ mạng lưới + biểu đồ xếp hạng
+Các thành phần trực quan gồm:
 
-```text
-social-network-analysis/
-|
-├── social_network.py    # File chính – toàn bộ logic phân tích & vẽ
-└── README.md            # Tài liệu hướng dẫn
+1. Bản đồ kết nối mạng xã hội
+- Hiển thị toàn bộ quan hệ giữa các user
+- Node càng lớn → độ ảnh hưởng càng cao
+- Màu sắc thể hiện cộng đồng
+
+2. Top 8 PageRank
+- Xếp hạng các node có độ uy tín cao nhất
+
+3. Top 8 Betweenness
+- Xếp hạng các node đóng vai trò trung gian quan trọng
+
+
+# Công nghệ sử dụng
+
+- Python 3.x
+- NetworkX
+- Pandas
+- Matplotlib
+- Seaborn
+- python-louvain
+- Jupyter Notebook
+
+
+# Cài đặt thư viện
+
+pip install networkx matplotlib pandas seaborn python-louvain
+
+
+# Cách chạy project
+
+## Chạy bằng Jupyter Notebook
+
+jupyter notebook
+
+Sau đó mở file:
+
+social_network_analysis.ipynb
+
+
+## Hoặc chạy bằng Google Colab
+
+Upload file notebook lên Google Colab và chạy từng cell.
+
+
+# Cấu trúc chương trình
+
+## create_social_graph()
+
+Khởi tạo directed graph và thêm các mối quan hệ giữa user.
+
+
+## get_analytics(G)
+
+Tính toán:
+
+- PageRank
+- Betweenness Centrality
+- Clustering Coefficient
+- Louvain Community Detection
+
+Sau đó trả về DataFrame chứa toàn bộ dữ liệu phân tích.
+
+
+## draw_dashboard(G, df, partition)
+
+Sinh dashboard trực quan gồm:
+
+- Network Graph
+- Biểu đồ PageRank
+- Biểu đồ Betweenness
+
+Có xử lý:
+- chống chồng node
+- cạnh cong cho quan hệ 2 chiều
+- scale node theo PageRank
+- tô màu theo community
+
+
+# Ý nghĩa các chỉ số
+
+| Chỉ số | Ý nghĩa |
+|--------|----------|
+| PageRank | Độ uy tín / sức ảnh hưởng |
+| Betweenness | Mức độ làm cầu nối |
+| LCC | Mức độ liên kết cục bộ |
+| Community | Nhóm xã hội / cụm cộng đồng |
+
+
+# Kết quả đầu ra
+
+## Console
+
+In bảng dữ liệu phân tích:
+
+User | PageRank | Betweenness | LCC | Community
+
+
+## Dashboard
+
+Hiển thị dashboard trực quan bằng matplotlib.
+
+
+# Google Colab
+
+Link Google Colab:
+
+https://colab.research.google.com/
+
+Nếu có notebook riêng:
+[Open In Colab](https://colab.research.google.com/drive/1CiOGfiVWAXpuOEFP49txISLDuXTaAP9s?usp=sharing)
+
+
+
+# Tác giả
+
+Project phục vụ mục đích:
+- học tập
+- nghiên cứu Social Network Analysis
+- trực quan hóa đồ thị mạng xã hội
